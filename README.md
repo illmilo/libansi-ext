@@ -1,53 +1,42 @@
-# ANSI🔥Art
+# img2ansi
 
-C++ ANSI🔥Art rendering library. Check out https://mrogalski.eu/ansi-art for an interactive demo.
+## Description
 
-## Background
+C++ ANSI Art rendering library. 
 
-Original [ANSI Art](https://en.wikipedia.org/wiki/ANSI_art) is typically limited to
+**Demo**: https://mrogalski.eu/ansi-art
+
+Originally, [ANSI Art](https://en.wikipedia.org/wiki/ANSI_art) is limited to
     <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit">16 colors</a> and the
     character set used by the original <a href="https://www.youtube.com/watch?v=_mZBa3sqTrI&t=1061s">IBM PC</a>.</p>
-  <p>Times have changed. Modern terminal emulators support 24-bit RGB colors & can display arbitrary
-    Unicode characters. This opens entirely new possibilities for the art that can be displayed in the terminal.</p>
-  <p>Let's call this 24-bit, Unicode-capable version of ANSI Art, an <strong>ANSI🔥Art</strong> (pronounced
-    just like a regular ANSI Art, although with a sound of blazing fire in the background).</p>
-  <p>ANSI🔥Art can be used in the output of interactive <a href="https://www.youtube.com/watch?v=_oHByo8tiEY">CLI</a>
-    commands, <a href="http://mewbies.com/how_to_customize_your_console_login_message_tutorial.htm">SSH MOTD</a>, an
-    element of a <a href="https://www.youtube.com/watch?v=4G_cthFZeJ8">ncurses</a> interface or even for
-    <a href="https://www.youtube.com/watch?v=MJZvWgcxV0M">animation</a>.</p>
-  <p>Here are some examples of what can be achieved:</p>
-  <img src="pictures/sample1.webp"><img src="pictures/sample2.webp"><img src="pictures/sample3.webp"><img src="pictures/sample4.webp">
+**img2ansi** provides extended version of ANSI Art, up to 24 colors and partial Unicode support.
+## Screenshots
+  <img src="pictures/sample2.webp"><img src="pictures/sample3.webp"><img src="pictures/sample4.webp">
+## Installation
+The only dependency is `Freetype`. I highly recommend using CMake as the project includes configured `CMakeLists.txt`.
+### Mac OS:
+`brew install freetype`
+
+### Linux:
+`sudo apt install libfreetype-dev`
+
+### Manual installation via Make:
+1. Download latest version from [download page](https://freetype.org/download.html);
+2. Unzip && `cd`;
+3. `./configure && make`.
 
 ## Usage
 
-This C++ library allows you to render any bitmap as an ANSI🔥Art.
+This library allows you to render any bitmap as an ANSI+ (Extended) Art.
 
-The only dependency is FreeType. On Debian-based distributions it can be installed with `sudo apt install libfreetype-dev`.
+`./run.sh` for demo result.
 
-In order to try out the library, run `./run.sh` and observe the results in your terminal:
+`<compiled_main.cc> <input_image> <5 ≤ width ≤ 100>` to render any of your images.
+
+In case the image extension isn't supported, it will render the latest successfully
+rendered image.
 
 <img src="pictures/example-result.webp">
-
-Example usage can be found in `example.cc`:
-
-```c++
-#include "maf/ansi_art.hh"
-
-#include "example-image.h"
-#include "example-font.h"
-
-int main() {
-  printf("Rendering... (this may take a few seconds)\n");
-  auto art = maf::AnsiArt::New();
-  art->LoadImage(example_image.width, example_image.height, example_image.pixel_data);
-  art->LoadTTF(UbuntuMono_R_ttf, UbuntuMono_R_ttf_len);
-  art->width = 80;
-  art->Render();
-  printf("%s\n", art->result_raw.c_str());
-  delete art;
-  return 0;
-}
-```
 
 ## API
 
@@ -88,3 +77,12 @@ public:
 } // namespace maf
 
 ```
+
+## Contributions
+Feel free to contribute and fork this repository.
+
+The [original repository](https://github.com/mafik/ansi-art) was created by [mafik](https://github.com/mafik), 
+forked by [me](https://github.com/illmilo).
+
+## License
+This project is under **MIT License**. See [LICENSE](LICENSE) for more.
