@@ -2,7 +2,7 @@
 // Created by illmilo on 05/11/2024.
 //
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "../src/stb_image.h"
 
 #include <string>
 #include <fstream>
