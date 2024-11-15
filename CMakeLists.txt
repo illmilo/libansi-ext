@@ -10,6 +10,6 @@ file(GLOB SOURCES "src/*.cc")
 include_directories(${FREETYPE_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 #include_directories(${OPENCV_INCLUDE_DIRS})
 
-add_executable(img2ansi ${SOURCES} main.cc
+add_executable(libansi-ext ${SOURCES} main.cc
         res/header-generator.h)
-target_link_libraries(img2ansi ${FREETYPE_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(libansi-ext ${FREETYPE_LIBRARIES} ${OpenCV_LIBS})
